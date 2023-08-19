@@ -33,15 +33,23 @@ const fetchButton = document.getElementById('btn');
 const advice_Text = document.getElementById('advice');
 const advice_id=document.getElementById("advice-no");
 // Add a click event listener to the button
-async function get_Advice() {
-    const res = await fetch("  https://api.adviceslip.com/advice");
-    const {slip:{id,advice}} = await res.json();
-    advice_id.innerText = id;
-    advice_Text.innerText = advice;
-}
-
-get_Advice()
-fetchButton.addEventListener("click",get_Advice)
+fetchButton.addEventListener('click', () => {
+    // Fetch data from the API
+    fetch('https://api.adviceslip.com/advice')
+        .then(response => response.json())
+        .then(data => {
+            // Update the <p> element with the fetched advice
+            advice_Text.textContent = data.slip.advice;
+            advice_id.textContent=data.slip.id
+           
+           
+        })
+        .catch(error => {
+            console.error('Error fetching advice:', error);
+            advice_Text.textContent = 'Error fetching advice. Please try again later.';
+           
+        });
+});
     </script>
   </body>
   
