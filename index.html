@@ -28,29 +28,21 @@
     
     </main>
     <script>
-      
+      https://api.adviceslip.com/advice
       // Get references to the button and the <p> element
 const fetchButton = document.getElementById('btn');
-const adviceText = document.getElementById('advice');
+const advice_Text = document.getElementById('advice');
 const advice_id=document.getElementById("advice-no");
 // Add a click event listener to the button
-fetchButton.addEventListener('click', () => {
-    // Fetch data from the API
-    fetch('https://api.adviceslip.com/advice')
-        .then(response => response.json())
-        .then(data => {
-            // Update the <p> element with the fetched advice
-            adviceText.textContent = data.slip.advice;
-            advice_id.textContent=data.slip.id
-           
-           
-        })
-        .catch(error => {
-            console.error('Error fetching advice:', error);
-            adviceText.textContent = 'Error fetching advice. Please try again later.';
-           
-        });
-});
+async function get_Advice() {
+    const res = await fetch("  https://api.adviceslip.com/advice");
+    const {slip:{id,advice}} = await res.json();
+    advice_id.innerText = id;
+    advice_Text.innerText = advice;
+}
+
+get_Advice()
+fetchButton.addEventListener("click",get_Advice)
     </script>
   </body>
   
