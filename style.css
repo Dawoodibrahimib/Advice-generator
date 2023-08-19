@@ -1,0 +1,98 @@
+:root
+{
+    --background-color:#1F2732;
+    --box-color:#313A49;
+    --Dice-color:#53FFA9;
+
+}
+*
+{
+    font-family: 'Manrope', sans-serif;
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+   
+   
+}
+
+body
+{
+    min-height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color);
+
+}
+.advice-card
+{
+    width: 500px;
+    background-color: var(--box-color);
+    border-radius: 1rem;
+    position: relative;
+
+}
+.card-container
+{
+    padding:2rem 3rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5rem;
+}
+#heading
+{
+    color: var(--Dice-color);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 12px;
+}
+h2{
+    color: lightcyan;
+    bottom: -30px;
+}
+.Divider
+{
+    margin-bottom:1rem;
+}
+button
+{
+    position: absolute;
+    bottom:-30px;
+    background-color:var(--Dice-color);
+    border: none;
+    padding:1rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+button:active
+{
+    box-shadow: 0 0 10px #53FFA9;
+    transform: all 0.3 ease-out;
+    border: 0cap;
+}
+
+@media  screen and (max-width:500px) {
+    .advice-card
+    {
+        width: 350px;
+    }
+    .Divider
+    {
+        content: url("/images/pattern-divider-mobile.svg");
+    }
+    
+}
+footer
+{
+    color: aliceblue;
+    position: absolute;
+    text-align: center;
+    bottom: 3px;
+}

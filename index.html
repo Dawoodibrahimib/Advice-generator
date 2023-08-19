@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap" rel="stylesheet">
+
+  <title>Frontend Mentor | Advice generator app</title>
+  <body>
+    <main>
+     <div class="advice-card">
+      <div class="card-container">
+        <p id="heading">ADVICE #<span id="advice-no"></span></p>
+        <h2>"<span id="advice"></span>"</h2>
+        <img src="./images/pattern-divider-desktop.svg" alt="divider" class="Divider">
+        <button id="btn"><img src="./images/icon-dice.svg" alt="dice"></button>
+      </div>
+     </div>
+    
+    </main>
+    <script>
+      
+      // Get references to the button and the <p> element
+const fetchButton = document.getElementById('btn');
+const adviceText = document.getElementById('advice');
+const advice_id=document.getElementById("advice-no");
+// Add a click event listener to the button
+fetchButton.addEventListener('click', () => {
+    // Fetch data from the API
+    fetch('https://api.adviceslip.com/advice')
+        .then(response => response.json())
+        .then(data => {
+            // Update the <p> element with the fetched advice
+            adviceText.textContent = data.slip.advice;
+            advice_id.textContent=data.slip.id
+           
+           
+        })
+        .catch(error => {
+            console.error('Error fetching advice:', error);
+            adviceText.textContent = 'Error fetching advice. Please try again later.';
+           
+        });
+});
+    </script>
+  </body>
+  
+
+</html>
